@@ -23,13 +23,6 @@ public class HomePage {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")));
-
-        try{
-            driver.findElement(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")).isDisplayed();
-            }
-        catch (Exception e){
-            System.out.println(e);
-            Assert.fail();
-        }
+        driver.findElement(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")).isDisplayed();
     }
 }

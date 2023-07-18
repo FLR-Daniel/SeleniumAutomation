@@ -40,12 +40,6 @@ public class AuthenticatePage {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-alert oxd-alert--error')]")));
-
-        try{
-            driver.findElement(By.xpath("//p[text() = 'Invalid credentials']")).isDisplayed();
-        }catch(Exception e){
-            System.out.println(e);
-            Assert.fail();
-        }
+        driver.findElement(By.xpath("//p[text() = 'Invalid credentials']")).isDisplayed();
     }
 }
