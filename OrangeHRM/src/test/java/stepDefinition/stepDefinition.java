@@ -1,30 +1,21 @@
 package stepDefinition;
 
-import com.beust.ah.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import pageObject.*;
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.awt.peer.ChoicePeer;
-import java.time.Duration;
 
 public class stepDefinition {
     WebDriver driver = null;
     String OrangeHRM = "https://opensource-demo.orangehrmlive.com/";
-    String validUsername = "Admin";
-    String validPassword = "admin123";
+    String validUsername = "Daniel-FLR";
+    String validPassword = "1LoveIceCream";
     String invalidPassword = "ILoveIceCream";
+    String languagePackage = "Spanish - Español";
     String picturePath  = "/Users/dflorea/projects/SeleniumAutomation/OrangeHRM/src/target/resources/1.jpeg";
 
     String filePath = "/Users/dflorea/projects/SeleniumAutomation/OrangeHRM/src/target/resources/Untitled.rtf";
@@ -86,88 +77,144 @@ public class stepDefinition {
 
     @And("I click on the Contact Details link which will redirect me to the contactDetails page")
     public void iClickOnTheContactDetailsLinkWhichWillRedirectMeToTheContactDetailsPage() {
-        MyInfo myInfo = new MyInfo(driver);
-        myInfo.ClickContactDetails();
+        MyInfoPage myInfoPage = new MyInfoPage(driver);
+        myInfoPage.ClickContactDetails();
     }
 
     @And("I update the Street 1 field from contact details")
     public void iUpdateTheStreetFieldFromContactDetails() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.SetStreet1("Test123");
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.SetStreet1("Test123");
     }
 
     @And("I select Algeria as country")
     public void iSelectAlgeriaAsCountry() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.SetCountry("Algeria");
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.SetCountry("Algeria");
     }
 
     @And("I press the Save button")
     public void iPressTheSaveButton() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.ClickSave();
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.ClickSave();
     }
 
     @Then("I should see the successfully updated confirmation message")
     public void iShouldSeeTheSuccessfullyUpdatedConfirmationMessage() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.CheckSuccess();
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.CheckSuccess();
         driver.quit();
     }
 
     @And("I click on the profile picture")
     public void iClickOnTheProfilePicture() {
-        PersonalDetails personalDetails = new PersonalDetails(driver);
-        personalDetails.ClickProfilePicture();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(driver);
+        personalDetailsPage.ClickProfilePicture();
     }
 
     @And("I add a picture")
     public void iAddAPicture() {
-        ProfilePicture profilePicture = new ProfilePicture(driver);
-        profilePicture.AddPicture(picturePath);
+        ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
+        profilePicturePage.AddPicture(picturePath);
     }
 
     @And("I click the Save button")
     public void iClickTheSaveButton() {
-        ProfilePicture profilePicture = new ProfilePicture(driver);
-        profilePicture.ClickSave();
+        ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
+        profilePicturePage.ClickSave();
     }
 
     @Then("I can see that my profile picture has been updated")
     public void iCanSeeThatMyProfilePictureHasBeenUpdated() {
-        ProfilePicture profilePicture = new ProfilePicture(driver);
-        profilePicture.CheckPictureUpload();
+        ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
+        profilePicturePage.CheckPictureUpload();
         driver.quit();
     }
 
     @And("I click the Add Attachments button")
     public void iClickTheAddAttachmentsButton() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.ClickAddAttachment();
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.ClickAddAttachment();
     }
 
     @And("I select to upload a file")
     public void iSelectToUploadAFile() {
-        ContactDetails contactDetails =  new ContactDetails(driver);
-        contactDetails.AddAttachmentFile(filePath);
+        ContactDetailsPage contactDetailsPage =  new ContactDetailsPage(driver);
+        contactDetailsPage.AddAttachmentFile(filePath);
     }
 
     @And("I add a comment for this document uploaded in the comment field")
     public void iAddACommentForThisDocumentUploadedInTheCommentField() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.AddAttachmentComment("Test123");
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.AddAttachmentComment("Test123");
     }
 
     @And("I press the Save button for this attachment added")
     public void iPressTheSaveButtonForThisAttachmentAdded() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.ClickAttachmentSave();
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.ClickAttachmentSave();
     }
 
     @Then("I am able to see my document added in the record found section by using css selector")
     public void iAmAbleToSeeMyDocumentAddedInTheRecordFoundSectionByUsingCssSelector() {
-        ContactDetails contactDetails = new ContactDetails(driver);
-        contactDetails.CheckAttachment("Test123");
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.CheckAttachment("Test123");
+        driver.quit();
+    }
+
+    @And("I tick the checkbox to select one record saved in the Records Found section")
+    public void iTickTheCheckboxToSelectOneRecordSavedInTheRecordsFoundSection() {
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.SelectRecord();
+    }
+
+    @And("I press the Delete button to delete that record")
+    public void iPressTheDeleteButtonToDeleteThatRecord() {
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.DeleteRecord();
+    }
+
+    @And("I press Yes to confirm this deletion")
+    public void iPressYesToConfirmThisDeletion() {
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.ConfirmDeletion();
+    }
+
+    @Then("I should receive a confirmation message that the record has been deleted successfully")
+    public void iShouldReceiveAConfirmationMessageThatTheRecordHasBeenDeletedSuccessfully() {
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
+        contactDetailsPage.CheckDeletion();
+        driver.quit();
+    }
+
+    @And("I click the Admin link from the menu")
+    public void iClickTheAdminLinkFromTheMenu() {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickAdmin();
+    }
+
+    @And("I click on the Configuration dropdown menu button")
+    public void iClickOnTheConfigurationDropdownMenuButton() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickConfiguration();
+    }
+
+    @And("I click on the Language Packages option")
+    public void iClickOnTheLanguagePackagesOption() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickLanguagePackages();
+    }
+
+    @And("I click on the Translate button for Spanish - Español language package")
+    public void iClickOnTheTranslateButtonForSpanishEspañolLanguagePackage() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickOnTranslate(languagePackage);
+    }
+
+    @Then("I should be redirected to the languageCustomization page")
+    public void iShouldBeRedirectedToTheLanguageCustomizationPage() {
+        LanguageCustomizationPage languageCustomizationPage = new LanguageCustomizationPage(driver);
+        languageCustomizationPage.CheckLanguageCusPage();
         driver.quit();
     }
 }

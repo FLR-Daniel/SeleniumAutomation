@@ -1,12 +1,10 @@
 package pageObject;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.time.Duration;
 
@@ -31,5 +29,12 @@ public class HomePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]")));
 
         driver.findElement(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')][text() = 'My Info']")).click();
+    }
+
+    public void ClickAdmin(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]")));
+
+        driver.findElement(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')][text() = 'Admin']")).click();
     }
 }

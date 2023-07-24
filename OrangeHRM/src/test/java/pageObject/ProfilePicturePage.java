@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProfilePicture {
+public class ProfilePicturePage {
 
     WebDriver driver;
 
-    public ProfilePicture(WebDriver driver){
+    public ProfilePicturePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

@@ -1,20 +1,19 @@
 package pageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.time.Duration;
 
-public class ContactDetails {
+public class ContactDetailsPage {
 
     WebDriver driver;
 
-    public ContactDetails(WebDriver driver){
+    public ContactDetailsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -82,7 +81,39 @@ public class ContactDetails {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.oxd-table-cell.oxd-padding-cell")));
 
-
         driver.findElement(By.cssSelector("div.oxd-table-cell.oxd-padding-cell:nth-child(3)>div")).getText().contains(commentToCheck);
+    }
+
+    public void SelectRecord(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-table')]")));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[contains(@class, 'checkbox')])[2]")));
+
+        driver.findElement(By.xpath("(//span[contains(@class, 'checkbox')])[2]")).click();
+    }
+
+    public void DeleteRecord(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[contains(@class, 'oxd-icon bi-trash-fill')]")));
+
+        driver.findElement(By.xpath("//i[contains(@class, 'oxd-icon bi-trash-fill')]")).click();
+    }
+
+    public void ConfirmDeletion(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = ' Yes, Delete ']")));
+
+        driver.findElement(By.xpath("//button[text() = ' Yes, Delete ']")).click();
+    }
+
+    public void CheckDeletion(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-toast--success')]")));
+
+        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success')]")).isDisplayed();
     }
 }

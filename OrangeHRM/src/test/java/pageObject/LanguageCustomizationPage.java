@@ -8,19 +8,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PersonalDetails {
+public class LanguageCustomizationPage {
 
     WebDriver driver;
 
-    public PersonalDetails(WebDriver driver){
+    public LanguageCustomizationPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void ClickProfilePicture(){
+    public void CheckLanguageCusPage(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[contains(@class, 'employee-image')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[text() = 'Translate Language Package']")));
 
-        driver. findElement(By.xpath("//img[contains(@class, 'employee-image')]")).click();
+        driver.findElement(By.xpath("//h5[text() = 'Translate Language Package']")).isDisplayed();
     }
 }
