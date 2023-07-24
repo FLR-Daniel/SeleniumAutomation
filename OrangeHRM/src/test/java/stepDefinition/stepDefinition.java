@@ -23,6 +23,8 @@ public class stepDefinition {
     public stepDefinition() {
     }
 
+    //Login with invalid credentials
+
     @Given("I access OrangeHRM page")
     public void navigate_to_site() {
         System.setProperty("webdriver.chrome.driver", "src/target/drivers/chromedriver");
@@ -55,6 +57,8 @@ public class stepDefinition {
         driver.quit();
     }
 
+    //Login with valid credentials
+
     @When("I enter valid login credentials")
     public void iEnterValidLoginCredentials() {
         AuthenticatePage authenticatePage = new AuthenticatePage(driver);
@@ -68,6 +72,8 @@ public class stepDefinition {
         homePage.CheckLogin();
         driver.quit();
     }
+
+    //As a user I am able to update my street and country details
 
     @And("I click the My Info option from the menu")
     public void iClickTheMyInfoOptionFromTheMenu() {
@@ -106,6 +112,8 @@ public class stepDefinition {
         driver.quit();
     }
 
+    //As a user I can change my profile picture
+
     @And("I click on the profile picture")
     public void iClickOnTheProfilePicture() {
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(driver);
@@ -130,6 +138,8 @@ public class stepDefinition {
         profilePicturePage.CheckPictureUpload();
         driver.quit();
     }
+
+    //As a user I am able to add an attachment into my Contact Details
 
     @And("I click the Add Attachments button")
     public void iClickTheAddAttachmentsButton() {
@@ -162,6 +172,8 @@ public class stepDefinition {
         driver.quit();
     }
 
+    //As a user I am able to delete a record from my Contact Details
+
     @And("I tick the checkbox to select one record saved in the Records Found section")
     public void iTickTheCheckboxToSelectOneRecordSavedInTheRecordsFoundSection() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
@@ -186,6 +198,8 @@ public class stepDefinition {
         contactDetailsPage.CheckDeletion();
         driver.quit();
     }
+
+    //As a user I am able to access the Language Packages
 
     @And("I click the Admin link from the menu")
     public void iClickTheAdminLinkFromTheMenu() {
