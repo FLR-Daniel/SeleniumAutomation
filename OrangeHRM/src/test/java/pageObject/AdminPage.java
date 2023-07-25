@@ -50,4 +50,34 @@ public class AdminPage {
             }
         }
     }
+
+    public void ClickOnAddLanguage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = ' Add ']")));
+
+        driver.findElement(By.xpath("//button[text() = ' Add ']")).click();
+    }
+
+    public void SelectAddLanguage(String language){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class = 'oxd-select-text oxd-select-text--active']")));
+
+        driver.findElement(By.xpath("//div[@class = 'oxd-select-text--after']")).click();
+
+        driver.findElement(By.xpath("//span[text() = '"+ language +"']")).click();
+    }
+
+    public void ClickSaveOnAddLanguage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = ' Save ']")));
+
+        driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
+    }
+
+    public void CheckLanguageAddition(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")));
+
+        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
+    }
 }

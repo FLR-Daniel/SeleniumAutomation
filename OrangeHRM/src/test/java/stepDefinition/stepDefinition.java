@@ -16,6 +16,7 @@ public class stepDefinition {
     String validPassword = "1LoveIceCream";
     String invalidPassword = "ILoveIceCream";
     String languagePackage = "Spanish - Español";
+    String languageToAdd = "Colognian (Germany)";
     String picturePath  = "/Users/dflorea/projects/SeleniumAutomation/OrangeHRM/src/target/resources/1.jpeg";
 
     String filePath = "/Users/dflorea/projects/SeleniumAutomation/OrangeHRM/src/target/resources/Untitled.rtf";
@@ -229,6 +230,33 @@ public class stepDefinition {
     public void iShouldBeRedirectedToTheLanguageCustomizationPage() {
         LanguageCustomizationPage languageCustomizationPage = new LanguageCustomizationPage(driver);
         languageCustomizationPage.CheckLanguageCusPage();
+        driver.quit();
+    }
+
+    //As a user I am able to add a new language Package
+
+    @And("I click the Add button to add a new language to the packages")
+    public void iClickTheAddButtonToAddANewLanguageToThePackages() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickOnAddLanguage();
+    }
+
+    @And("I select the language Colognian\\(Germany) from that list")
+    public void iSelectTheLanguageColognianGermanyFromThatList() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.SelectAddLanguage(languageToAdd);
+    }
+
+    @And("I press the Save to add this new language to my packages")
+    public void iPressTheSaveToAddThisNewLanguageToMyPackages() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickSaveOnAddLanguage();
+    }
+
+    @Then("I should be able to see the confirmation message that the language was successfully saved")
+    public void iShouldBeAbleToSeeTheConfirmationMessageThatTheLanguageWasSuccessfullySaved() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.CheckLanguageAddition();
         driver.quit();
     }
 }
