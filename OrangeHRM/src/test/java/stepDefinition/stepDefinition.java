@@ -14,6 +14,7 @@ public class stepDefinition {
     String OrangeHRM = "https://opensource-demo.orangehrmlive.com/";
     String validUsername = "Daniel-FLR";
     String validPassword = "1LoveIceCream";
+    String newPassword = "Test123";
     String invalidPassword = "ILoveIceCream";
     String languagePackage = "Spanish - Español";
     String languageToAdd = "Colognian (Germany)";
@@ -257,6 +258,45 @@ public class stepDefinition {
     public void iShouldBeAbleToSeeTheConfirmationMessageThatTheLanguageWasSuccessfullySaved() {
         AdminPage adminPage = new AdminPage(driver);
         adminPage.CheckLanguageAddition();
+        driver.quit();
+    }
+
+    //Change Password for a user
+
+    @And("I select the Change Password option from drop-down user profile menu")
+    public void iSelectTheChangePasswordOptionFromDropDownUserProfileMenu() {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickChangePassword();
+    }
+
+    @And("I enter the current password in the Current Password field")
+    public void iEnterTheCurrentPasswordInTheCurrentPasswordField() {
+        UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
+        updatePasswordPage.SetCurrentPassword(validPassword);
+    }
+
+    @And("I enter in the Password field a new password")
+    public void iEnterInThePasswordFieldANewPassword() {
+        UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
+        updatePasswordPage.SetNewPassword(newPassword);
+    }
+
+    @And("I confirm the new password")
+    public void iConfirmTheNewPassword() {
+        UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
+        updatePasswordPage.SetConfirmPassword(newPassword);
+    }
+
+    @And("I press the Save button to update the password")
+    public void iPressTheSaveButtonToUpdateThePassword() {
+        UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
+        updatePasswordPage.ClickSave();
+    }
+
+    @Then("I should be able to see the confirmation message")
+    public void iShouldBeAbleToSeeTheConfirmationMessage() {
+        UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
+        updatePasswordPage.CheckPasswordChange();
         driver.quit();
     }
 }
