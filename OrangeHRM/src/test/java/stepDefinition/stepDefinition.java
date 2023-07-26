@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.zh_cn.假如;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.*;
 import org.openqa.selenium.WebDriver;
@@ -297,6 +298,51 @@ public class stepDefinition {
     public void iShouldBeAbleToSeeTheConfirmationMessage() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
         updatePasswordPage.CheckPasswordChange();
+        driver.quit();
+    }
+
+    //As a user I want to add a new job
+
+    @And("I select the Job Titles option from the Job menu dropdown")
+    public void iSelectTheJobTitlesOptionFromTheJobMenuDropdown() {
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.ClickJobTitle();
+    }
+
+    @And("I click the Add button to add a new job")
+    public void iClickTheAddButtonToAddANewJob() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.ClickAdd();
+    }
+
+    @And("I add a name for the job in the Job Title field")
+    public void iAddANameForTheJobInTheJobTitleField() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.SetJobTitle("Test123");
+    }
+
+    @And("I add a job description")
+    public void iAddAJobDescription() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.SetJobDescription("Test123");
+    }
+
+    @And("I add a Job Specification file")
+    public void iAddAJobSpecificationFile() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.SetJobFile(filePath);
+    }
+
+    @And("I click the Save button to add the new job")
+    public void iClickTheSaveButtonToAddTheNewJob() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.ClickSave();
+    }
+
+    @Then("I should see the confirmation message that the job was successfully added")
+    public void iShouldSeeTheConfirmationMessageThatTheJobWasSuccessfullyAdded() {
+        JobTitlePage jobTitlePage = new JobTitlePage(driver);
+        jobTitlePage.CheckSuccess();
         driver.quit();
     }
 }

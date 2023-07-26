@@ -80,4 +80,14 @@ public class AdminPage {
 
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }
+
+    public void ClickJobTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = 'Job ']")));
+
+        driver.findElement(By.xpath("//span[text() = 'Job ']")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text() = 'Job Titles']")));
+        driver.findElement(By.xpath("//a[text() = 'Job Titles']")).click();
+    }
 }
