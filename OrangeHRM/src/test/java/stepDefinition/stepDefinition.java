@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.zh_cn.假如;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.*;
 import org.openqa.selenium.WebDriver;
@@ -223,7 +222,7 @@ public class stepDefinition {
     }
 
     @And("I click on the Translate button for Spanish - Español language package")
-    public void iClickOnTheTranslateButtonForSpanishEspañolLanguagePackage() {
+    public void iClickOnTheTranslateButtonForSpanishEspanolLanguagePackage() {
         AdminPage adminPage = new AdminPage(driver);
         adminPage.ClickOnTranslate(languagePackage);
     }
@@ -343,6 +342,51 @@ public class stepDefinition {
     public void iShouldSeeTheConfirmationMessageThatTheJobWasSuccessfullyAdded() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
         jobTitlePage.CheckSuccess();
+        driver.quit();
+    }
+
+    //As a user I can access an employee's records
+
+    @And("I click on the Maintenance option from the menu which will redirect me to the purgeEmployee page")
+    public void iClickOnTheMaintenanceOptionFromTheMenuWhichWillRedirectMeToThePurgeEmployeePage() {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickMaintenance();
+    }
+
+    @And("I enter my password to validate my administrator credentials")
+    public void iEnterMyPasswordToValidateMyAdministratorCredentials() {
+        MaintenancePage maintenancePage = new MaintenancePage(driver);
+        maintenancePage.SetValidationCredentials(validPassword);
+    }
+
+    @And("I click the Confirm button")
+    public void iClickTheConfirmButton() {
+        MaintenancePage maintenancePage = new MaintenancePage(driver);
+        maintenancePage.ClickConfirm();
+    }
+
+    @And("I click on the Access Records option")
+    public void iClickOnTheAccessRecordsOption() {
+        MaintenancePage maintenancePage = new MaintenancePage(driver);
+        maintenancePage.ClickAccess();
+    }
+
+    @And("I enter Anthony Anadebe in the Employee Name field")
+    public void iEnterAnthonyAnadebeInTheEmployeeNameField() {
+        MaintenancePage maintenancePage = new MaintenancePage(driver);
+        maintenancePage.SetEmployeeName("Daniel Flore");
+    }
+
+    @And("click on the Search button")
+    public void clickOnTheSearchButton() {
+        MaintenancePage maintenancePage =  new MaintenancePage(driver);
+        maintenancePage.ClickSearch();
+    }
+
+    @Then("I can see that the employee ID is displayed in the Selected Employee section by using css selector")
+    public void iCanSeeThatTheEmployeeIDIsDisplayedInTheSelectedEmployeeSectionByUsingCssSelector() {
+        MaintenancePage maintenancePage = new MaintenancePage(driver);
+        maintenancePage.CheckVisibilityID();
         driver.quit();
     }
 }

@@ -48,4 +48,11 @@ public class HomePage {
 
         driver.findElement(By.xpath("//a[text() = 'Change Password']")).click();
     }
+
+    public void ClickMaintenance(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = 'Maintenance']")));
+
+        driver.findElement(By.xpath("//span[text() = 'Maintenance']")).click();
+    }
 }
