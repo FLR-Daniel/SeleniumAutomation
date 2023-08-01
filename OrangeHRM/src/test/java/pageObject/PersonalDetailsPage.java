@@ -16,11 +16,13 @@ public class PersonalDetailsPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
     public void ClickProfilePicture(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[contains(@class, 'employee-image')]")));
-
+        waitForElement(30, "//img[contains(@class, 'employee-image')]");
         driver. findElement(By.xpath("//img[contains(@class, 'employee-image')]")).click();
     }
 }

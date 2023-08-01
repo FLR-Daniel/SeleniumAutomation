@@ -15,11 +15,13 @@ public class MyInfoPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
     public void ClickContactDetails(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text() = 'Contact Details']")));
-
+        waitForElement(30, "//a[text() = 'Contact Details']");
         driver.findElement(By.xpath("//a[text() = 'Contact Details']")).click();
     }
 

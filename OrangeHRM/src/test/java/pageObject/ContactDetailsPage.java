@@ -18,62 +18,51 @@ public class ContactDetailsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void SetStreet1(String street){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")));
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
+    public void SetStreet1(String street){
+        waitForElement(30, "(//input[contains(@class, 'oxd-input oxd-input--active')])[2]");
         driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).click();
         driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).clear();
         driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).sendKeys(street);
     }
 
     public void SetCountry(String country){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-select-text-input')]")));
-
+        waitForElement(30, "//div[contains(@class, 'oxd-select-text-input')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-select-text-input')]")).click();
         driver.findElement(By.xpath("//span[text()='"+ country +"']")).click();
     }
 
     public void ClickSave(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@type, 'submit')]")));
-
+        waitForElement(30, "//button[contains(@type, 'submit')]");
         driver.findElement(By.xpath("//button[contains(@type, 'submit')]")).click();
     }
 
     public void CheckSuccess(){
-        WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]")));
-
+        waitForElement(30, "//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]")).isDisplayed();
     }
 
     public void ClickAddAttachment(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[contains(@type, 'button')])[3]")));
-
+        waitForElement(30, "(//button[contains(@type, 'button')])[3]");
         driver.findElement(By.xpath("(//button[contains(@type, 'button')])[3]")).click();
     }
 
     public void AddAttachmentFile(String filePath){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-file-div')]")));
-
+        waitForElement(30, "//div[contains(@class, 'oxd-file-div')]");
         driver.findElement(By.xpath("//input[contains(@type, 'file')]")).sendKeys(filePath);
     }
 
     public void AddAttachmentComment(String comment){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[contains(@class, 'textarea')]")));
-
+        waitForElement(30, "//textarea[contains(@class, 'textarea')]");
         driver.findElement(By.xpath("//textarea[contains(@class, 'textarea')]")).sendKeys(comment);
     }
 
     public void ClickAttachmentSave(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[contains(@type, 'submit')])[2]")));
-
+        waitForElement(30, "(//button[contains(@type, 'submit')])[2]");
         driver.findElement(By.xpath("(//button[contains(@type, 'submit')])[2]")).click();
     }
 
@@ -85,34 +74,28 @@ public class ContactDetailsPage {
     }
 
     public void SelectRecord(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-table')]")));
+        waitForElement(30, "//div[contains(@class, 'oxd-table')]");
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[contains(@class, 'checkbox')])[2]")));
-
+        waitForElement(30, "(//span[contains(@class, 'checkbox')])[2]");
         driver.findElement(By.xpath("(//span[contains(@class, 'checkbox')])[2]")).click();
     }
 
     public void DeleteRecord(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[contains(@class, 'oxd-icon bi-trash-fill')]")));
-
+        waitForElement(30, "//i[contains(@class, 'oxd-icon bi-trash-fill')]");
         driver.findElement(By.xpath("//i[contains(@class, 'oxd-icon bi-trash-fill')]")).click();
     }
 
     public void ConfirmDeletion(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = ' Yes, Delete ']")));
+        waitForElement(30, "//button[text() = ' Yes, Delete ']");
 
         driver.findElement(By.xpath("//button[text() = ' Yes, Delete ']")).click();
     }
 
     public void CheckDeletion(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-toast--success')]")));
+        waitForElement(30, "//div[contains(@class, 'oxd-toast--success')]");
 
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success')]")).isDisplayed();
     }

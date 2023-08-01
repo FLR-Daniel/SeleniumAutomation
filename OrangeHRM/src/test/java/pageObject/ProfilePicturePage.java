@@ -18,26 +18,24 @@ public class ProfilePicturePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void AddPicture(String filePath){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'oxd-icon-button oxd-icon-button--solid-main employee-image-action')]")));
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
+    public void AddPicture(String filePath){
+        waitForElement(30, "//button[contains(@class, 'oxd-icon-button oxd-icon-button--solid-main employee-image-action')]");
         WebElement fileElement = driver.findElement(By.xpath("//input[contains(@type, 'file')]"));
-        //fileElement.click();
         fileElement.sendKeys(filePath);
     }
 
     public void ClickSave(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@type, 'submit')]")));
-
+        waitForElement(30, "//button[contains(@type, 'submit')]");
         driver.findElement(By.xpath("//button[contains(@type, 'submit')]")).click();
     }
 
     public void CheckPictureUpload(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")));
-
+        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }
 }

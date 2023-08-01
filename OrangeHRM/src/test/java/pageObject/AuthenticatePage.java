@@ -15,11 +15,13 @@ public class AuthenticatePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
     public void SetUsername(String username){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@name, 'username')]")));
-
+        waitForElement(30, "//input[contains(@name, 'username')]");
         driver.findElement(By.xpath("//input[contains(@name, 'username')]")).sendKeys(username);
     }
     public void SetPassword(String password){
@@ -35,9 +37,7 @@ public class AuthenticatePage {
     }
 
     public void CheckInvalidLogin(){
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'oxd-alert oxd-alert--error')]")));
+        waitForElement(30, "//div[contains(@class, 'oxd-alert oxd-alert--error')]");
         driver.findElement(By.xpath("//p[text() = 'Invalid credentials']")).isDisplayed();
     }
 }

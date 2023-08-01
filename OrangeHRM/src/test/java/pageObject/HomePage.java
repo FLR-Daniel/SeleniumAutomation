@@ -16,50 +16,41 @@ public class HomePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
     public void CheckLogin() {
+        waitForElement(30, "//p[contains(@class, 'oxd-userdropdown-name')]");
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")));
         driver.findElement(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")).isDisplayed();
     }
 
     public void ClickMyInfo() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]")));
-
+        waitForElement(30, "//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]");
         driver.findElement(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')][text() = 'My Info']")).click();
     }
 
     public void ClickAdmin() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]")));
-
+        waitForElement(30, "//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]");
         driver.findElement(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')][text() = 'Admin']")).click();
     }
 
     public void ClickChangePassword() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class = 'oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")));
-
+        waitForElement(30, "//i[@class = 'oxd-icon bi-caret-down-fill oxd-userdropdown-icon']");
         driver.findElement(By.xpath("//i[@class = 'oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text() = 'Change Password']")));
-
+        waitForElement(30, "//a[text() = 'Change Password']");
         driver.findElement(By.xpath("//a[text() = 'Change Password']")).click();
     }
 
     public void ClickMaintenance() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = 'Maintenance']")));
-
+        waitForElement(30, "//span[text() = 'Maintenance']");
         driver.findElement(By.xpath("//span[text() = 'Maintenance']")).click();
     }
 
     public void ClickPIM() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = 'PIM']")));
-
+        waitForElement(30, "//span[text() = 'PIM']");
         driver.findElement(By.xpath("//span[text() = 'PIM']")).click();
     }
 }

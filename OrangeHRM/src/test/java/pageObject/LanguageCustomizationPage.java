@@ -17,10 +17,13 @@ public class LanguageCustomizationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void CheckLanguageCusPage(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[text() = 'Translate Language Package']")));
+    public void waitForElement(long durationSeconds, String selector){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    }
 
+    public void CheckLanguageCusPage(){
+        waitForElement(30, "//h5[text() = 'Translate Language Package']");
         driver.findElement(By.xpath("//h5[text() = 'Translate Language Package']")).isDisplayed();
     }
 }
