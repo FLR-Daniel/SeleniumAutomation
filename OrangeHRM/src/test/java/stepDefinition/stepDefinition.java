@@ -444,4 +444,43 @@ public class stepDefinition {
         pimPage.CheckCreation();
         driver.quit();
     }
+
+    //As a user I can add a comment for a leave request
+
+    @And("I click the Leave link from the menu")
+    public void iClickTheLeaveLinkFromTheMenu() {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickLeave();
+    }
+
+    @And("I click on the button with three dots which is located in the left corner for an employee record")
+    public void iClickOnTheButtonWithThreeDotsWhichIsLocatedInTheLeftCornerForAnEmployeeRecord() {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.ClickDotsUser();
+    }
+
+    @And("I select to Add Comment from that list")
+    public void iSelectToAddCommentFromThatList() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.ClickAddComment();
+    }
+
+    @And("I enter a comment in the Leave Request Comments section")
+    public void iEnterACommentInTheLeaveRequestCommentsSection() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.SetComment("Test123");
+    }
+
+    @And("I save the comment")
+    public void iSaveTheComment() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.ClickSave();
+    }
+
+    @Then("I should be able to see the confirmation message that the comment was added successfully")
+    public void iShouldBeAbleToSeeTheConfirmationMessageThatTheCommentWasAddedSuccessfully() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.CheckCommentAdded();
+        driver.quit();
+    }
 }

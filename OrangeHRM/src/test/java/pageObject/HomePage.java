@@ -53,4 +53,9 @@ public class HomePage {
         waitForElement(30, "//span[text() = 'PIM']");
         driver.findElement(By.xpath("//span[text() = 'PIM']")).click();
     }
+
+    public void ClickLeave(){
+        waitForElement(30, "//span[text() = 'Leave']");
+        driver.findElement(By.xpath("//span[text() = 'Leave']")).click();
+    }
 }
