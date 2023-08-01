@@ -389,4 +389,59 @@ public class stepDefinition {
         maintenancePage.CheckVisibilityID();
         driver.quit();
     }
+
+    // As a user I am able to add a new employee
+
+    @And("I click on the PIM option from the menu")
+    public void iClickOnThePIMOptionFromTheMenu() {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickPIM();
+    }
+
+    @And("I choose the Add Employee option")
+    public void iChooseTheAddEmployeeOption() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.ClickAdd();
+    }
+
+    @And("I add a profile picture for that employee")
+    public void iAddAProfilePictureForThatEmployee() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.AddProfilePicture(picturePath);
+    }
+
+    @And("I enter the employee's full name in the Employee Full Name section")
+    public void iEnterTheEmployeeSFullNameInTheEmployeeFullNameSection() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.SetFirstName("Daniel");
+        pimPage.SetMiddleName("Test123");
+        pimPage.SetLastName("Florea");
+    }
+
+    @And("I enter an employee id in the Employee Id field")
+    public void iEnterAnEmployeeIdInTheEmployeeIdField() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.SetId("9999");
+    }
+
+    @And("I click the Create Login Details button to make the option available")
+    public void iClickTheCreateLoginDetailsButtonToMakeTheOptionAvailable() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.ThickCreateLoginDetails();
+    }
+
+    @And("I add a username and password")
+    public void iAddAUsernameAndPassword() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.SetUsername("Test123");
+        pimPage.SetPassword("Test123");
+        pimPage.SetConfirmPassword("Test123");
+    }
+
+    @Then("I should see a confirmation message that the employee was successfully saved")
+    public void iShouldSeeAConfirmationMessageThatTheEmployeeWasSuccessfullySaved() {
+        PIMPage pimPage = new PIMPage(driver);
+        pimPage.CheckCreation();
+        driver.quit();
+    }
 }
