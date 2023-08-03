@@ -1,7 +1,9 @@
 package pageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -47,8 +49,10 @@ public class PIMPage {
     }
 
     public void SetId(String id){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         waitForElement(30, "(//input[@class = 'oxd-input oxd-input--active'])[2]");
-        driver.findElement(By.xpath("(//input[@class = 'oxd-input oxd-input--active'])[2]")).sendKeys(id);
+        WebElement element1  = driver.findElement(By.xpath("(//input[@class = 'oxd-input oxd-input--active'])[2]"));
+        js.executeScript("arguments[0].value = '" + id + "';", element1);
     }
 
     public void ThickCreateLoginDetails(){
