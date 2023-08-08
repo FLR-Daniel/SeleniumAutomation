@@ -20,7 +20,7 @@ public class MyInfoPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void ClickContactDetails(){
+    public void clickContactDetails(){
         waitForElement(30, "//a[text() = 'Contact Details']");
         driver.findElement(By.xpath("//a[text() = 'Contact Details']")).click();
     }

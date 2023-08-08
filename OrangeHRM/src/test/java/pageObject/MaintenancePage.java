@@ -22,22 +22,22 @@ public class MaintenancePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void SetValidationCredentials(String password){
+    public void setValidationCredentials(String password){
         waitForElement(30, "//input[@name= 'password']");
         driver.findElement(By.xpath("//input[@name= 'password']")).sendKeys(password);
     }
 
-    public void ClickConfirm(){
+    public void clickConfirm(){
         waitForElement(30, "//button[text() = ' Confirm ']");
         driver.findElement(By.xpath("//button[text() = ' Confirm ']")).click();
     }
 
-    public void ClickAccess(){
+    public void clickAccess(){
         waitForElement(30, "//a[text() = 'Access Records']");
         driver.findElement(By.ByXPath.xpath("//a[text() = 'Access Records']")).click();
     }
 
-    public void SetEmployeeName(String name){
+    public void setEmployeeName(String name){
         waitForElement(30, "//input[@placeholder = 'Type for hints...']");
         driver.findElement(By.xpath("//input[@placeholder = 'Type for hints...']")).sendKeys(name);
 
@@ -49,12 +49,12 @@ public class MaintenancePage {
         driver.findElement(By.xpath("//div[@class = 'oxd-autocomplete-option']")).click();
     }
 
-    public void ClickSearch(){
+    public void clickSearch(){
         waitForElement(30, "//button[text() = ' Search ']");
         driver.findElement(By.xpath("//button[text() = ' Search ']")).click();
     }
 
-    public void CheckVisibilityID(){
+    public void checkVisibilityID(){
         waitForElement(30, "#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div.orangehrm-background-container > div > form > div.orangehrm-selected-employee > div.orangehrm-selected-employee-content > div:nth-child(2) > div > div > div > div:nth-child(2) > input");
         driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div.orangehrm-background-container > div > form > div.orangehrm-selected-employee > div.orangehrm-selected-employee-content > div:nth-child(2) > div > div > div > div:nth-child(2) > input")).isDisplayed();
     }

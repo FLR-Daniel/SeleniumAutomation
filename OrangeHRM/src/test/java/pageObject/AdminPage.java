@@ -24,17 +24,17 @@ public class AdminPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void ClickConfiguration(){
+    public void clickConfiguration(){
         waitForElement(30, "//span[text() = 'Configuration ']");
         driver.findElement(By.xpath("//span[text() = 'Configuration ']")).click();
     }
 
-    public void ClickLanguagePackages(){
+    public void clickLanguagePackages(){
         waitForElement(30, "//a[text() = 'Language Packages']");
         driver.findElement(By.xpath("//a[text() = 'Language Packages']")).click();
     }
 
-    public void ClickOnTranslate(String language){
+    public void clickOnTranslate(String language){
         waitForElement(30, "//div[@class = 'oxd-table-card']");
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class = 'oxd-table-card']"));
 
@@ -48,28 +48,28 @@ public class AdminPage {
         }
     }
 
-    public void ClickOnAddLanguage(){
+    public void clickOnAddLanguage(){
         waitForElement(30, "//button[text() = ' Add ']");
         driver.findElement(By.xpath("//button[text() = ' Add ']")).click();
     }
 
-    public void SelectAddLanguage(String language){
+    public void selectAddLanguage(String language){
         waitForElement(30, "//div[@class = 'oxd-select-text oxd-select-text--active']");
         driver.findElement(By.xpath("//div[@class = 'oxd-select-text--after']")).click();
         driver.findElement(By.xpath("//span[text() = '"+ language +"']")).click();
     }
 
-    public void ClickSaveOnAddLanguage(){
+    public void clickSaveOnAddLanguage(){
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
     }
 
-    public void CheckLanguageAddition(){
+    public void checkLanguageAddition(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }
 
-    public void ClickJobTitle() {
+    public void clickJobTitle() {
         waitForElement(30, "//span[text() = 'Job ']");
         driver.findElement(By.xpath("//span[text() = 'Job ']")).click();
         waitForElement(30, "//a[text() = 'Job Titles']");

@@ -22,32 +22,32 @@ public class JobTitlePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void ClickAdd(){
+    public void clickAdd(){
         waitForElement(30, "//button[text() = ' Add ']");
         driver.findElement(By.xpath("//button[text() = ' Add ']")).click();
     }
 
-    public void SetJobTitle(String jobTitle){
+    public void setJobTitle(String jobTitle){
         waitForElement(30, "(//input[@class = 'oxd-input oxd-input--active'])[2]");
         driver.findElement(By.xpath("(//input[@class = 'oxd-input oxd-input--active'])[2]")).sendKeys(jobTitle);
     }
 
-    public void SetJobDescription(String jobDescription){
+    public void setjobdescription(String jobDescription){
         waitForElement(30, "(//textarea[@class = 'oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical'])[1]");
         driver.findElement(By.xpath("(//textarea[@class = 'oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical'])[1]")).sendKeys(jobDescription);
     }
 
-    public void SetJobFile(String filePath){
+    public void setJobFile(String filePath){
         waitForElement(30, "//div[@class='oxd-file-div oxd-file-div--active']");
         driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(filePath);
     }
 
-    public void ClickSave(){
+    public void clickSave(){
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
     }
 
-    public void CheckSuccess(){
+    public void checkSuccess(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }

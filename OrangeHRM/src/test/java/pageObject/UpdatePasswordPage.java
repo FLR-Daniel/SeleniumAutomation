@@ -22,27 +22,27 @@ public class UpdatePasswordPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void SetCurrentPassword(String currentPassword){
+    public void setCurrentPassword(String currentPassword){
         waitForElement(30, "(//input[@type = 'password'])[1]");
         driver.findElement(By.xpath("(//input[@type = 'password'])[1]")).sendKeys(currentPassword);
     }
 
-    public void SetNewPassword(String newPassword){
+    public void setNewPassword(String newPassword){
         waitForElement(30, "(//input[@type = 'password'])[2]");
         driver.findElement(By.xpath("(//input[@type = 'password'])[2]")).sendKeys(newPassword);
     }
 
-    public void SetConfirmPassword(String confirmPassword){
+    public void setConfirmPassword(String confirmPassword){
         waitForElement(30, "(//input[@type = 'password'])[3]");
         driver.findElement(By.xpath("(//input[@type = 'password'])[3]")).sendKeys(confirmPassword);
     }
 
-    public void ClickSave(){
+    public void clickSave(){
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
     }
 
-    public void CheckPasswordChange(){
+    public void checkPasswordChange(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }

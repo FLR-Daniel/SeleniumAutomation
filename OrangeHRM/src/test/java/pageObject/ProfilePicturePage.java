@@ -23,18 +23,18 @@ public class ProfilePicturePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void AddPicture(String filePath){
+    public void addPicture(String filePath){
         waitForElement(30, "//button[contains(@class, 'oxd-icon-button oxd-icon-button--solid-main employee-image-action')]");
         WebElement fileElement = driver.findElement(By.xpath("//input[contains(@type, 'file')]"));
-        fileElement.sendKeys(filePath);
+        fileElement.sendKeys(filePath); //have a look a remote webdriver
     }
 
-    public void ClickSave(){
+    public void clickSave(){
         waitForElement(30, "//button[contains(@type, 'submit')]");
         driver.findElement(By.xpath("//button[contains(@type, 'submit')]")).click();
     }
 
-    public void CheckPictureUpload(){
+    public void checkPictureUpload(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
         driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }

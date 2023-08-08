@@ -19,15 +19,15 @@ public class AuthenticatePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void SetUsername(String username){
+    public void setUsername(String username){
         waitForElement(30, "//input[contains(@name, 'username')]");
         driver.findElement(By.xpath("//input[contains(@name, 'username')]")).sendKeys(username);
     }
-    public void SetPassword(String password){
+    public void setPassword(String password){
         driver.findElement(By.xpath("//input[contains(@name, 'password')]")).sendKeys(password);
     }
 
-    public void ClickLogin(){
+    public void clickLogin(){
         driver.findElement(By.xpath("//button[contains(@class, 'oxd-button oxd-button--medium oxd-button--main orangehrm-login-button')]")).click();
     }
 
@@ -35,7 +35,7 @@ public class AuthenticatePage {
         driver.findElement(By.xpath("//div[contains(@class, 'orangehrm-login-forgot')]/p")).click();
     }
 
-    public void CheckInvalidLogin(){
+    public void checkInvalidLogin(){
         waitForElement(30, "//div[contains(@class, 'oxd-alert oxd-alert--error')]");
         driver.findElement(By.xpath("//p[text() = 'Invalid credentials']")).isDisplayed();
     }

@@ -21,7 +21,7 @@ public class PersonalDetailsPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void ClickProfilePicture(){
+    public void clickProfilePicture(){
         waitForElement(30, "//img[contains(@class, 'employee-image')]");
         driver. findElement(By.xpath("//img[contains(@class, 'employee-image')]")).click();
     }

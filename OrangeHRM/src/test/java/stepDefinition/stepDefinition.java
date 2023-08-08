@@ -42,20 +42,20 @@ public class stepDefinition {
     @When("I enter invalid login credentials")
     public void iEnterInvalidLoginCredentials() {
         AuthenticatePage authenticatePage = new AuthenticatePage(driver);
-        authenticatePage.SetUsername(validUsername);
-        authenticatePage.SetPassword(invalidPassword);
+        authenticatePage.setUsername(validUsername);
+        authenticatePage.setPassword(invalidPassword);
     }
 
     @And("I press the Login button to log into my account")
     public void iPressTheLoginButtonToLogIntoMyAccount() {
         AuthenticatePage authenticatePage = new AuthenticatePage(driver);
-        authenticatePage.ClickLogin();
+        authenticatePage.clickLogin();
     }
 
     @Then("I verify that an appropriate message is displayed for invalid credentials")
     public void iVerifyThatAnAppropriateMessageIsDisplayedForInvalidCredentials() {
         AuthenticatePage authenticatePage = new AuthenticatePage(driver);
-        authenticatePage.CheckInvalidLogin();
+        authenticatePage.checkInvalidLogin();
         driver.quit();
     }
 
@@ -64,14 +64,14 @@ public class stepDefinition {
     @When("I enter valid login credentials")
     public void iEnterValidLoginCredentials() {
         AuthenticatePage authenticatePage = new AuthenticatePage(driver);
-        authenticatePage.SetUsername(validUsername);
-        authenticatePage.SetPassword(validPassword);
+        authenticatePage.setUsername(validUsername);
+        authenticatePage.setPassword(validPassword);
     }
 
     @Then("I verify that I am logged into my account by checking that the username is displayed")
     public void iVerifyThatIAmLoggedIntoMyAccountByCheckingThatTheUsernameIsDisplayed() {
         HomePage homePage = new HomePage(driver);
-        homePage.CheckLogin();
+        homePage.checkLogin();
         driver.quit();
     }
 
@@ -80,37 +80,37 @@ public class stepDefinition {
     @And("I click the My Info option from the menu")
     public void iClickTheMyInfoOptionFromTheMenu() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickMyInfo();
+        homePage.clickMyInfo();
     }
 
     @And("I click on the Contact Details link which will redirect me to the contactDetails page")
     public void iClickOnTheContactDetailsLinkWhichWillRedirectMeToTheContactDetailsPage() {
         MyInfoPage myInfoPage = new MyInfoPage(driver);
-        myInfoPage.ClickContactDetails();
+        myInfoPage.clickContactDetails();
     }
 
     @And("I update the Street 1 field from contact details")
     public void iUpdateTheStreetFieldFromContactDetails() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.SetStreet1("Test123");
+        contactDetailsPage.setStreet1("Test123");
     }
 
     @And("I select Algeria as country")
     public void iSelectAlgeriaAsCountry() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.SetCountry("Algeria");
+        contactDetailsPage.setCountry("Algeria");
     }
 
     @And("I press the Save button")
     public void iPressTheSaveButton() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.ClickSave();
+        contactDetailsPage.clickSave();
     }
 
     @Then("I should see the successfully updated confirmation message")
     public void iShouldSeeTheSuccessfullyUpdatedConfirmationMessage() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.CheckSuccess();
+        contactDetailsPage.checkSuccess();
         driver.quit();
     }
 
@@ -119,25 +119,25 @@ public class stepDefinition {
     @And("I click on the profile picture")
     public void iClickOnTheProfilePicture() {
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(driver);
-        personalDetailsPage.ClickProfilePicture();
+        personalDetailsPage.clickProfilePicture();
     }
 
     @And("I add a picture")
     public void iAddAPicture() {
         ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
-        profilePicturePage.AddPicture(picturePath);
+        profilePicturePage.addPicture(picturePath);
     }
 
     @And("I click the Save button")
     public void iClickTheSaveButton() {
         ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
-        profilePicturePage.ClickSave();
+        profilePicturePage.clickSave();
     }
 
     @Then("I can see that my profile picture has been updated")
     public void iCanSeeThatMyProfilePictureHasBeenUpdated() {
         ProfilePicturePage profilePicturePage = new ProfilePicturePage(driver);
-        profilePicturePage.CheckPictureUpload();
+        profilePicturePage.checkPictureUpload();
         driver.quit();
     }
 
@@ -146,31 +146,31 @@ public class stepDefinition {
     @And("I click the Add Attachments button")
     public void iClickTheAddAttachmentsButton() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.ClickAddAttachment();
+        contactDetailsPage.clickAddAttachment();
     }
 
     @And("I select to upload a file")
     public void iSelectToUploadAFile() {
         ContactDetailsPage contactDetailsPage =  new ContactDetailsPage(driver);
-        contactDetailsPage.AddAttachmentFile(filePath);
+        contactDetailsPage.addAttachmentFile(filePath);
     }
 
     @And("I add a comment for this document uploaded in the comment field")
     public void iAddACommentForThisDocumentUploadedInTheCommentField() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.AddAttachmentComment("Test123");
+        contactDetailsPage.addAttachmentComment("Test123");
     }
 
     @And("I press the Save button for this attachment added")
     public void iPressTheSaveButtonForThisAttachmentAdded() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.ClickAttachmentSave();
+        contactDetailsPage.clickAttachmentSave();
     }
 
     @Then("I am able to see my document added in the record found section by using css selector")
     public void iAmAbleToSeeMyDocumentAddedInTheRecordFoundSectionByUsingCssSelector() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.CheckAttachment("Test123");
+        contactDetailsPage.checkAttachment("Test123");
         driver.quit();
     }
 
@@ -179,25 +179,25 @@ public class stepDefinition {
     @And("I tick the checkbox to select one record saved in the Records Found section")
     public void iTickTheCheckboxToSelectOneRecordSavedInTheRecordsFoundSection() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.SelectRecord();
+        contactDetailsPage.selectRecord();
     }
 
     @And("I press the Delete button to delete that record")
     public void iPressTheDeleteButtonToDeleteThatRecord() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.DeleteRecord();
+        contactDetailsPage.deleteRecord();
     }
 
     @And("I press Yes to confirm this deletion")
     public void iPressYesToConfirmThisDeletion() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.ConfirmDeletion();
+        contactDetailsPage.confirmDeletion();
     }
 
     @Then("I should receive a confirmation message that the record has been deleted successfully")
     public void iShouldReceiveAConfirmationMessageThatTheRecordHasBeenDeletedSuccessfully() {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
-        contactDetailsPage.CheckDeletion();
+        contactDetailsPage.checkDeletion();
         driver.quit();
     }
 
@@ -206,31 +206,31 @@ public class stepDefinition {
     @And("I click the Admin link from the menu")
     public void iClickTheAdminLinkFromTheMenu() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickAdmin();
+        homePage.clickAdmin();
     }
 
     @And("I click on the Configuration dropdown menu button")
     public void iClickOnTheConfigurationDropdownMenuButton() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickConfiguration();
+        adminPage.clickConfiguration();
     }
 
     @And("I click on the Language Packages option")
     public void iClickOnTheLanguagePackagesOption() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickLanguagePackages();
+        adminPage.clickLanguagePackages();
     }
 
     @And("I click on the Translate button for Spanish - Español language package")
     public void iClickOnTheTranslateButtonForSpanishEspanolLanguagePackage() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickOnTranslate(languagePackage);
+        adminPage.clickOnTranslate(languagePackage);
     }
 
     @Then("I should be redirected to the languageCustomization page")
     public void iShouldBeRedirectedToTheLanguageCustomizationPage() {
         LanguageCustomizationPage languageCustomizationPage = new LanguageCustomizationPage(driver);
-        languageCustomizationPage.CheckLanguageCusPage();
+        languageCustomizationPage.checkLanguageCusPage();
         driver.quit();
     }
 
@@ -239,25 +239,25 @@ public class stepDefinition {
     @And("I click the Add button to add a new language to the packages")
     public void iClickTheAddButtonToAddANewLanguageToThePackages() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickOnAddLanguage();
+        adminPage.clickOnAddLanguage();
     }
 
     @And("I select the language Colognian\\(Germany) from that list")
     public void iSelectTheLanguageColognianGermanyFromThatList() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.SelectAddLanguage(languageToAdd);
+        adminPage.selectAddLanguage(languageToAdd);
     }
 
     @And("I press the Save to add this new language to my packages")
     public void iPressTheSaveToAddThisNewLanguageToMyPackages() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickSaveOnAddLanguage();
+        adminPage.clickSaveOnAddLanguage();
     }
 
     @Then("I should be able to see the confirmation message that the language was successfully saved")
     public void iShouldBeAbleToSeeTheConfirmationMessageThatTheLanguageWasSuccessfullySaved() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.CheckLanguageAddition();
+        adminPage.checkLanguageAddition();
         driver.quit();
     }
 
@@ -266,37 +266,37 @@ public class stepDefinition {
     @And("I select the Change Password option from drop-down user profile menu")
     public void iSelectTheChangePasswordOptionFromDropDownUserProfileMenu() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickChangePassword();
+        homePage.clickChangePassword();
     }
 
     @And("I enter the current password in the Current Password field")
     public void iEnterTheCurrentPasswordInTheCurrentPasswordField() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
-        updatePasswordPage.SetCurrentPassword(validPassword);
+        updatePasswordPage.setCurrentPassword(validPassword);
     }
 
     @And("I enter in the Password field a new password")
     public void iEnterInThePasswordFieldANewPassword() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
-        updatePasswordPage.SetNewPassword(newPassword);
+        updatePasswordPage.setNewPassword(newPassword);
     }
 
     @And("I confirm the new password")
     public void iConfirmTheNewPassword() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
-        updatePasswordPage.SetConfirmPassword(newPassword);
+        updatePasswordPage.setConfirmPassword(newPassword);
     }
 
     @And("I press the Save button to update the password")
     public void iPressTheSaveButtonToUpdateThePassword() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
-        updatePasswordPage.ClickSave();
+        updatePasswordPage.clickSave();
     }
 
     @Then("I should be able to see the confirmation message")
     public void iShouldBeAbleToSeeTheConfirmationMessage() {
         UpdatePasswordPage updatePasswordPage = new UpdatePasswordPage(driver);
-        updatePasswordPage.CheckPasswordChange();
+        updatePasswordPage.checkPasswordChange();
         driver.quit();
     }
 
@@ -305,43 +305,43 @@ public class stepDefinition {
     @And("I select the Job Titles option from the Job menu dropdown")
     public void iSelectTheJobTitlesOptionFromTheJobMenuDropdown() {
         AdminPage adminPage = new AdminPage(driver);
-        adminPage.ClickJobTitle();
+        adminPage.clickJobTitle();
     }
 
     @And("I click the Add button to add a new job")
     public void iClickTheAddButtonToAddANewJob() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.ClickAdd();
+        jobTitlePage.clickAdd();
     }
 
     @And("I add a name for the job in the Job Title field")
     public void iAddANameForTheJobInTheJobTitleField() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.SetJobTitle("Test123");
+        jobTitlePage.setJobTitle("Test123");
     }
 
     @And("I add a job description")
     public void iAddAJobDescription() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.SetJobDescription("Test123");
+        jobTitlePage.setjobdescription("Test123");
     }
 
     @And("I add a Job Specification file")
     public void iAddAJobSpecificationFile() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.SetJobFile(filePath);
+        jobTitlePage.setJobFile(filePath);
     }
 
     @And("I click the Save button to add the new job")
     public void iClickTheSaveButtonToAddTheNewJob() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.ClickSave();
+        jobTitlePage.clickSave();
     }
 
     @Then("I should see the confirmation message that the job was successfully added")
     public void iShouldSeeTheConfirmationMessageThatTheJobWasSuccessfullyAdded() {
         JobTitlePage jobTitlePage = new JobTitlePage(driver);
-        jobTitlePage.CheckSuccess();
+        jobTitlePage.checkSuccess();
         driver.quit();
     }
 
@@ -350,43 +350,43 @@ public class stepDefinition {
     @And("I click on the Maintenance option from the menu which will redirect me to the purgeEmployee page")
     public void iClickOnTheMaintenanceOptionFromTheMenuWhichWillRedirectMeToThePurgeEmployeePage() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickMaintenance();
+        homePage.clickMaintenance();
     }
 
     @And("I enter my password to validate my administrator credentials")
     public void iEnterMyPasswordToValidateMyAdministratorCredentials() {
         MaintenancePage maintenancePage = new MaintenancePage(driver);
-        maintenancePage.SetValidationCredentials(validPassword);
+        maintenancePage.setValidationCredentials(validPassword);
     }
 
     @And("I click the Confirm button")
     public void iClickTheConfirmButton() {
         MaintenancePage maintenancePage = new MaintenancePage(driver);
-        maintenancePage.ClickConfirm();
+        maintenancePage.clickConfirm();
     }
 
     @And("I click on the Access Records option")
     public void iClickOnTheAccessRecordsOption() {
         MaintenancePage maintenancePage = new MaintenancePage(driver);
-        maintenancePage.ClickAccess();
+        maintenancePage.clickAccess();
     }
 
     @And("I enter Anthony Anadebe in the Employee Name field")
     public void iEnterAnthonyAnadebeInTheEmployeeNameField() {
         MaintenancePage maintenancePage = new MaintenancePage(driver);
-        maintenancePage.SetEmployeeName("Daniel Flore");
+        maintenancePage.setEmployeeName("Daniel Flore");
     }
 
     @And("click on the Search button")
     public void clickOnTheSearchButton() {
         MaintenancePage maintenancePage =  new MaintenancePage(driver);
-        maintenancePage.ClickSearch();
+        maintenancePage.clickSearch();
     }
 
     @Then("I can see that the employee ID is displayed in the Selected Employee section by using css selector")
     public void iCanSeeThatTheEmployeeIDIsDisplayedInTheSelectedEmployeeSectionByUsingCssSelector() {
         MaintenancePage maintenancePage = new MaintenancePage(driver);
-        maintenancePage.CheckVisibilityID();
+        maintenancePage.checkVisibilityID();
         driver.quit();
     }
 
@@ -395,53 +395,54 @@ public class stepDefinition {
     @And("I click on the PIM option from the menu")
     public void iClickOnThePIMOptionFromTheMenu() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickPIM();
+        homePage.clickPIM();
     }
 
     @And("I choose the Add Employee option")
     public void iChooseTheAddEmployeeOption() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.ClickAdd();
+        pimPage.clickAdd();
     }
 
     @And("I add a profile picture for that employee")
     public void iAddAProfilePictureForThatEmployee() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.AddProfilePicture(picturePath);
+        pimPage.addProfilePicture(picturePath);
     }
 
     @And("I enter the employee's full name in the Employee Full Name section")
     public void iEnterTheEmployeeSFullNameInTheEmployeeFullNameSection() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.SetFirstName("Daniel");
-        pimPage.SetMiddleName("Test123");
-        pimPage.SetLastName("Florea");
+        pimPage.setFirstName("Daniel");
+        pimPage.setMiddleName("Test123");
+        pimPage.setLastName("Florea");
     }
 
     @And("I enter an employee id in the Employee Id field")
     public void iEnterAnEmployeeIdInTheEmployeeIdField() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.SetId("9999");
+        pimPage.setId("9999");
     }
 
     @And("I click the Create Login Details button to make the option available")
     public void iClickTheCreateLoginDetailsButtonToMakeTheOptionAvailable() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.ThickCreateLoginDetails();
+        pimPage.thickCreateLoginDetails();
     }
 
     @And("I add a username and password")
     public void iAddAUsernameAndPassword() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.SetUsername("Test123");
-        pimPage.SetPassword("Test123");
-        pimPage.SetConfirmPassword("Test123");
+        pimPage.setUsername("Test123");
+        pimPage.setPassword("Test123");
+        pimPage.setConfirmPassword("Test123");
+        pimPage.setId("9999");
     }
 
     @Then("I should see a confirmation message that the employee was successfully saved")
     public void iShouldSeeAConfirmationMessageThatTheEmployeeWasSuccessfullySaved() {
         PIMPage pimPage = new PIMPage(driver);
-        pimPage.CheckCreation();
+        pimPage.checkCreation();
         driver.quit();
     }
 
@@ -450,37 +451,70 @@ public class stepDefinition {
     @And("I click the Leave link from the menu")
     public void iClickTheLeaveLinkFromTheMenu() {
         HomePage homePage = new HomePage(driver);
-        homePage.ClickLeave();
+        homePage.clickLeave();
     }
 
     @And("I click on the button with three dots which is located in the left corner for an employee record")
     public void iClickOnTheButtonWithThreeDotsWhichIsLocatedInTheLeftCornerForAnEmployeeRecord() {
         LeavePage leavePage =  new LeavePage(driver);
-        leavePage.ClickDotsUser();
+        leavePage.clickDotsUser();
     }
 
     @And("I select to Add Comment from that list")
     public void iSelectToAddCommentFromThatList() {
         LeavePage leavePage = new LeavePage(driver);
-        leavePage.ClickAddComment();
+        leavePage.clickAddComment();
     }
 
     @And("I enter a comment in the Leave Request Comments section")
     public void iEnterACommentInTheLeaveRequestCommentsSection() {
         LeavePage leavePage = new LeavePage(driver);
-        leavePage.SetComment("Test123");
+        leavePage.setComment("Test123");
     }
 
     @And("I save the comment")
     public void iSaveTheComment() {
         LeavePage leavePage = new LeavePage(driver);
-        leavePage.ClickSave();
+        leavePage.clickSave();
     }
 
     @Then("I should be able to see the confirmation message that the comment was added successfully")
     public void iShouldBeAbleToSeeTheConfirmationMessageThatTheCommentWasAddedSuccessfully() {
         LeavePage leavePage = new LeavePage(driver);
-        leavePage.CheckCommentAdded();
+        leavePage.sheckCommentAdded();
         driver.quit();
+    }
+
+    //As a user I want to see all the vacation leave records for a certain period
+
+    @And("I select a specific period for which I want to see the records")
+    public void iSelectASpecificPeriodForWhichIWantToSeeTheRecords() {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.setDatePeriod("2022-07-01","2022-07-31");
+
+    }
+
+    @And("I select to see only leave with Pending Approval status")
+    public void iSelectToSeeOnlyLeaveWithPendingApprovalStatus() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.selectPendingApprove();
+    }
+
+    @And("I set Leave Type as US - Vacation")
+    public void iSetLeaveTypeAsUSVacation() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.selectLeaveType("US - Vacation");
+    }
+
+    @And("I press search button")
+    public void iPressSearchButton() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.clickSearch();
+    }
+
+    @Then("I should see all the records with all the data entered")
+    public void iShouldSeeAllTheRecordsWithAllTheDataEntered() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.checkLeaveResults();
     }
 }

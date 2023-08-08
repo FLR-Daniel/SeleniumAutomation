@@ -22,7 +22,7 @@ public class LanguageCustomizationPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
-    public void CheckLanguageCusPage(){
+    public void checkLanguageCusPage(){
         waitForElement(30, "//h5[text() = 'Translate Language Package']");
         driver.findElement(By.xpath("//h5[text() = 'Translate Language Package']")).isDisplayed();
     }
