@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -93,15 +94,24 @@ public class LeavePage {
         driver.findElement(By.xpath("//button[text() = ' Search ']")).click();
     }
 
-    public void checkLeaveResults(){
-        try{
+    public void checkLeaveResults() {
+        try {
             waitForElement(1, "//div[@class = 'oxd-table-card']");
             driver.findElement(By.xpath("//div[@class = 'oxd-table-card']")).isDisplayed();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             waitForElement(5, "//p[text() = 'No Records Found']");
             driver.findElement(By.xpath("//p[text() = 'No Records Found']")).isDisplayed();
             System.out.println("!!! No Leave Records Found With Selected Filters!!!");
         }
+    }
+
+    public void selectRejectedStatus(){
+        waitForElement(30, "(//div[@class = 'oxd-select-text-input'])[1]");
+        driver.findElement(By.xpath("(//div[@class = 'oxd-select-text-input'])[1]")).click();
+        driver.findElement(By.xpath("//span[text() = 'Rejected']")).click();
+    }
+    public void checkRejected(){
+        waitForElement(30, "//span[text()= 'Rejected ']");
+        driver.findElement(By.xpath("//span[text()= 'Rejected ']")).isDisplayed();
     }
 }

@@ -517,4 +517,19 @@ public class stepDefinition {
         LeavePage leavePage = new LeavePage(driver);
         leavePage.checkLeaveResults();
     }
+
+    //As a user I can verify that the Rejected status is correctly added to the leave records search
+
+    @And("I select the Rejected status from the Show Leave with Status section")
+    public void iSelectTheRejectedStatusFromTheShowLeaveWithStatusSection() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.selectRejectedStatus();
+    }
+
+    @Then("I check that the Rejected status is present as a selection by using XPath selector")
+    public void iCheckThatTheRejectedStatusIsPresentAsASelectionByUsingXPathSelector() {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.checkRejected();
+        driver.quit();
+    }
 }
