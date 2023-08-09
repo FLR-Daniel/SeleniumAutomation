@@ -516,6 +516,7 @@ public class stepDefinition {
     public void iShouldSeeAllTheRecordsWithAllTheDataEntered() {
         LeavePage leavePage = new LeavePage(driver);
         leavePage.checkLeaveResults();
+        driver.quit();
     }
 
     //As a user I can verify that the Rejected status is correctly added to the leave records search
@@ -530,6 +531,45 @@ public class stepDefinition {
     public void iCheckThatTheRejectedStatusIsPresentAsASelectionByUsingXPathSelector() {
         LeavePage leavePage =  new LeavePage(driver);
         leavePage.checkRejected();
+        driver.quit();
+    }
+
+    //As a user I want to see leave records with Pending Approval status for an employee, and then reset the entered data
+
+    @And("I select a period from {int}{int}{int} to {int}{int}{int}")
+    public void iSelectAPeriodFromTo(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.setDatePeriod("2021-12-01", "2023-12-31");
+    }
+
+    @And("I select Leave Type as CAN - Personal")
+    public void iSelectLeaveTypeAsCANPersonal() {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.selectLeaveType("CAN - Personal");
+    }
+
+    @And("I enter Anthony Nolan in the Employee Name field")
+    public void iEnterAnthonyNolanInTheEmployeeNameField() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.setEmployeeName("Daniel Florea");
+    }
+
+    @And("I press the Search button")
+    public void iPressTheSearchButton() {
+        LeavePage leavePage =  new LeavePage(driver);
+        leavePage.clickSearch();
+    }
+
+    @And("I click on the Reset button")
+    public void iClickOnTheResetButton() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.clickReset();
+    }
+
+    @Then("I should see a pop-up message that says no records found")
+    public void iShouldSeeAPopUpMessageThatSaysNoRecordsFound() {
+        LeavePage leavePage = new LeavePage(driver);
+        leavePage.checkLeaveResults();
         driver.quit();
     }
 }

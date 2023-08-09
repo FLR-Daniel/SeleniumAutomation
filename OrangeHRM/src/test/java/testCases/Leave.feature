@@ -29,3 +29,16 @@ Feature: Leave Page
     And I click the Leave link from the menu
     And I select the Rejected status from the Show Leave with Status section
     Then I check that the Rejected status is present as a selection by using XPath selector
+
+  Scenario: As a user I want to see leave records with Pending Approval status for an employee, and then reset the entered data
+    Given I access OrangeHRM page
+    When I enter valid login credentials
+    And I press the Login button to log into my account
+    And I click the Leave link from the menu
+    And I select a period from 2021-12-01 to 2023-12-31
+    And I select to see only leave with Pending Approval status
+    And I select Leave Type as CAN - Personal
+    And I enter Anthony Nolan in the Employee Name field
+    And I press the Search button
+    And I click on the Reset button
+    Then I should see a pop-up message that says no records found

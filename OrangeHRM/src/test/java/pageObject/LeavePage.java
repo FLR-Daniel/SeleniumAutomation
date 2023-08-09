@@ -114,4 +114,21 @@ public class LeavePage {
         waitForElement(30, "//span[text()= 'Rejected ']");
         driver.findElement(By.xpath("//span[text()= 'Rejected ']")).isDisplayed();
     }
+
+    public void setEmployeeName(String fullName){
+        waitForElement(30, "//div[@class = 'oxd-autocomplete-text-input oxd-autocomplete-text-input--active']");
+        driver.findElement(By.xpath("//div[@class = 'oxd-autocomplete-text-input oxd-autocomplete-text-input--active']/input")).sendKeys(fullName);
+
+        try{Thread.sleep(3000);}
+        catch (Exception e){
+            System.out.println(e);
+        }
+        waitForElement(30, "//div[@class = 'oxd-autocomplete-option']");
+        driver.findElement(By.xpath("//div[@class = 'oxd-autocomplete-option']")).click();
+    }
+
+    public void clickReset(){
+        waitForElement(30, "//button[text() = ' Reset ']");
+        driver.findElement(By.xpath("//button[text() = ' Reset ']")).click();
+    }
 }
