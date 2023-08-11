@@ -572,4 +572,77 @@ public class stepDefinition {
         leavePage.checkLeaveResults();
         driver.quit();
     }
+
+    //As a user I can see all the Junior Account Assistant vacancies
+    @And("I click on the Recruitment option from the menu")
+    public void iClickOnTheRecruitmentOptionFromTheMenu() {
+        HomePage homePage = new HomePage(driver);
+        homePage.clickRecruitment();
+    }
+
+    @And("I click on the Vacancies option")
+    public void iClickOnTheVacanciesOption() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.clickVacancyTab();
+    }
+
+    @And("I search for vacancies with job title as Junior Account Assistant")
+    public void iSearchForVacanciesWithJobTitleAsAccountAssistant() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.setVacancy("Junior Account Assistant");
+        recruitmentPage.clickSearch();
+    }
+
+    @Then("I can see that all records are displayed for Junior Account Assistant")
+    public void iCanSeeThatAllRecordsAreDisplayedForAccountAssistant() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.checkRecordsByVacancy("Junior Account Assistant");
+        driver.quit();
+    }
+
+    //As a user I am able to schedule an interview with a candidate
+
+    @And("I click on the view icon located in the Actions section to see a candidate's application in Status Shortlisted")
+    public void iClickOnTheViewIconLocatedInTheActionsSectionToSeeACandidateSApplicationInStatusShortlisted() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.clickViewForStatus("Shortlisted");
+    }
+
+    @And("I click the Schedule Interview button for that candidate")
+    public void iClickTheScheduleInterviewButtonForThatCandidate() {
+        RecruitmentPage recruitmentPage =  new RecruitmentPage(driver);
+        recruitmentPage.clickScheduleInterview();
+    }
+
+    @And("I add the title of the interview")
+    public void iAddTheTitleOfTheInterview() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.setInterviewTitle("Test123");
+    }
+
+    @And("I add two interviewers in the Interviewer field")
+    public void iAddTwoInterviewersInTheInterviewerField() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.addInterviewers("Daniel Florea", "Odis Adalwin");
+    }
+
+    @And("I select a date and hour")
+    public void iSelectADateAndHour() {
+        RecruitmentPage recruitmentPage =  new RecruitmentPage(driver);
+        recruitmentPage.setInterviewDate("2023-08-31");
+        recruitmentPage.setInterviewTime("12:34 AM");
+    }
+
+    @And("I press the Save button to schedule the interview")
+    public void iPressTheSaveButtonToScheduleTheInterview() {
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.clickSave();
+    }
+
+    @Then("I should see the confirmation message for this scheduled interview")
+    public void iShouldSeeTheConfirmationMessageForThisScheduledInterview() {
+        RecruitmentPage recruitmentPage =  new RecruitmentPage(driver);
+        recruitmentPage.checkScheduleInterview();
+        driver.quit();
+    }
 }
