@@ -481,7 +481,7 @@ public class stepDefinition {
     @Then("I should be able to see the confirmation message that the comment was added successfully")
     public void iShouldBeAbleToSeeTheConfirmationMessageThatTheCommentWasAddedSuccessfully() {
         LeavePage leavePage = new LeavePage(driver);
-        leavePage.sheckCommentAdded();
+        leavePage.checkCommentAdded();
         driver.quit();
     }
 

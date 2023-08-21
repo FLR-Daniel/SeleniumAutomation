@@ -19,6 +19,8 @@ public class AdminPage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -64,15 +66,17 @@ public class AdminPage {
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
     }
 
-    public void checkLanguageAddition(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
-    }
-
     public void clickJobTitle() {
         waitForElement(30, "//span[text() = 'Job ']");
         driver.findElement(By.xpath("//span[text() = 'Job ']")).click();
         waitForElement(30, "//a[text() = 'Job Titles']");
         driver.findElement(By.xpath("//a[text() = 'Job Titles']")).click();
+    }
+
+    //===== VALIDATION STEPS =====//
+
+    public void checkLanguageAddition(){
+        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
+        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }
 }

@@ -17,6 +17,8 @@ public class UpdatePasswordPage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -41,6 +43,8 @@ public class UpdatePasswordPage {
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
     }
+
+    //===== VALIDATION STEPS =====//
 
     public void checkPasswordChange(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");

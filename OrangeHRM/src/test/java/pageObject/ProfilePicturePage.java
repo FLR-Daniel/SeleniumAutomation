@@ -18,6 +18,8 @@ public class ProfilePicturePage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -33,6 +35,8 @@ public class ProfilePicturePage {
         waitForElement(30, "//button[contains(@type, 'submit')]");
         driver.findElement(By.xpath("//button[contains(@type, 'submit')]")).click();
     }
+
+    //===== VALIDATION STEPS =====//
 
     public void checkPictureUpload(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");

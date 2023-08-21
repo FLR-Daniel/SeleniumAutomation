@@ -20,6 +20,8 @@ public class LeavePage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -43,11 +45,6 @@ public class LeavePage {
     public void clickSave(){
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
-    }
-
-    public void sheckCommentAdded(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
     }
 
     /**
@@ -94,25 +91,10 @@ public class LeavePage {
         driver.findElement(By.xpath("//button[text() = ' Search ']")).click();
     }
 
-    public void checkLeaveResults() {
-        try {
-            waitForElement(1, "//div[@class = 'oxd-table-card']");
-            driver.findElement(By.xpath("//div[@class = 'oxd-table-card']")).isDisplayed();
-        } catch (Exception e) {
-            waitForElement(5, "//p[text() = 'No Records Found']");
-            driver.findElement(By.xpath("//p[text() = 'No Records Found']")).isDisplayed();
-            System.out.println("!!! No Leave Records Found With Selected Filters!!!");
-        }
-    }
-
     public void selectRejectedStatus(){
         waitForElement(30, "(//div[@class = 'oxd-select-text-input'])[1]");
         driver.findElement(By.xpath("(//div[@class = 'oxd-select-text-input'])[1]")).click();
         driver.findElement(By.xpath("//span[text() = 'Rejected']")).click();
-    }
-    public void checkRejected(){
-        waitForElement(30, "//span[text()= 'Rejected ']");
-        driver.findElement(By.xpath("//span[text()= 'Rejected ']")).isDisplayed();
     }
 
     public void setEmployeeName(String fullName){
@@ -131,4 +113,29 @@ public class LeavePage {
         waitForElement(30, "//button[text() = ' Reset ']");
         driver.findElement(By.xpath("//button[text() = ' Reset ']")).click();
     }
+
+    //===== VALIDATION STEPS =====//
+
+    public void checkCommentAdded(){
+        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
+        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
+    }
+
+    public void checkLeaveResults() {
+        try {
+            waitForElement(1, "//div[@class = 'oxd-table-card']");
+            driver.findElement(By.xpath("//div[@class = 'oxd-table-card']")).isDisplayed();
+        } catch (Exception e) {
+            waitForElement(5, "//p[text() = 'No Records Found']");
+            driver.findElement(By.xpath("//p[text() = 'No Records Found']")).isDisplayed();
+            System.out.println("!!! No Leave Records Found With Selected Filters!!!");
+        }
+    }
+
+    public void checkRejected(){
+        waitForElement(30, "//span[text()= 'Rejected ']");
+        driver.findElement(By.xpath("//span[text()= 'Rejected ']")).isDisplayed();
+    }
+
+
 }

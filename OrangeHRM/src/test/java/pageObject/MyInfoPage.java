@@ -15,6 +15,9 @@ public class MyInfoPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -24,5 +27,7 @@ public class MyInfoPage {
         waitForElement(30, "//a[text() = 'Contact Details']");
         driver.findElement(By.xpath("//a[text() = 'Contact Details']")).click();
     }
+
+    //===== VALIDATION STEPS =====//
 
 }

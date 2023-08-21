@@ -16,17 +16,13 @@ public class HomePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
-
-    public void checkLogin() {
-        waitForElement(30, "//p[contains(@class, 'oxd-userdropdown-name')]");
-
-        driver.findElement(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")).isDisplayed();
-    }
-
     public void clickMyInfo() {
         waitForElement(30, "//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')]");
         driver.findElement(By.xpath("//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name')][text() = 'My Info']")).click();
@@ -62,5 +58,13 @@ public class HomePage {
     public void clickRecruitment(){
         waitForElement(30, "//span[text() = 'Recruitment']");
         driver.findElement(By.xpath("//span[text() = 'Recruitment']")).click();
+    }
+
+    //===== VALIDATION STEPS =====//
+
+    public void checkLogin() {
+        waitForElement(30, "//p[contains(@class, 'oxd-userdropdown-name')]");
+
+        driver.findElement(By.xpath("//p[contains(@class, 'oxd-userdropdown-name')]")).isDisplayed();
     }
 }

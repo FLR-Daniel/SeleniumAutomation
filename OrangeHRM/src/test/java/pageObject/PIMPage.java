@@ -18,6 +18,9 @@ public class PIMPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -74,6 +77,8 @@ public class PIMPage {
         waitForElement(30, "(//input[@type = 'password'])[2]");
         driver.findElement(By.xpath("(//input[@type = 'password'])[2]")).sendKeys(confirmPassword);
     }
+
+    //===== VALIDATION STEPS =====//
 
     public void checkCreation(){
         waitForElement(30, "//div[contains(@class, 'oxd-toast--success')]");

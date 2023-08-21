@@ -14,6 +14,9 @@ public class AuthenticatePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -34,6 +37,8 @@ public class AuthenticatePage {
     public void ClickForgot(){
         driver.findElement(By.xpath("//div[contains(@class, 'orangehrm-login-forgot')]/p")).click();
     }
+
+    //===== VALIDATION STEPS =====//
 
     public void checkInvalidLogin(){
         waitForElement(30, "//div[contains(@class, 'oxd-alert oxd-alert--error')]");

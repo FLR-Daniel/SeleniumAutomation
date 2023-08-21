@@ -19,6 +19,8 @@ public class RecruitmentPage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -38,11 +40,6 @@ public class RecruitmentPage {
     public void clickSearch(){
         waitForElement(30, "//button[text() = ' Search ']");
         driver.findElement(By.xpath("//button[text() = ' Search ']")).click();
-    }
-
-    public void checkRecordsByVacancy(String vacancy){
-        waitForElement(30, "//div[@class = 'oxd-table-cell oxd-padding-cell']/div[text() = '"+ vacancy +"']");
-        driver.findElement(By.xpath("//div[@class = 'oxd-table-cell oxd-padding-cell']/div[text() = '"+ vacancy +"']")).isDisplayed();
     }
 
     public void clickViewForStatus(String status){
@@ -103,8 +100,8 @@ public class RecruitmentPage {
         }
         waitForElement(30, "//div[@class = 'oxd-autocomplete-option']");
         driver.findElement(By.xpath("//div[@class = 'oxd-autocomplete-option']")).click();
-
     }
+
     public void addInterviewers(String interviewer1, String interviewer2, String interviewer3){
         //=======1st Interviewer=======
         waitForElement(30, "(//div[@class = 'oxd-input-group oxd-input-field-bottom-space'])[6]");
@@ -167,6 +164,13 @@ public class RecruitmentPage {
     public void clickSave(){
         waitForElement(30, "//button[text() = ' Save ']");
         driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
+    }
+
+    //===== VALIDATION STEPS =====//
+
+    public void checkRecordsByVacancy(String vacancy){
+        waitForElement(30, "//div[@class = 'oxd-table-cell oxd-padding-cell']/div[text() = '"+ vacancy +"']");
+        driver.findElement(By.xpath("//div[@class = 'oxd-table-cell oxd-padding-cell']/div[text() = '"+ vacancy +"']")).isDisplayed();
     }
 
     public void checkScheduleInterview(){

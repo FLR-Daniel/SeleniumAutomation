@@ -18,6 +18,8 @@ public class ContactDetailsPage {
         PageFactory.initElements(driver, this);
     }
 
+    //===== ACTION STEPS =====//
+
     public void waitForElement(long durationSeconds, String selector){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
@@ -41,11 +43,6 @@ public class ContactDetailsPage {
         driver.findElement(By.xpath("//button[contains(@type, 'submit')]")).click();
     }
 
-    public void checkSuccess(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]");
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]")).isDisplayed();
-    }
-
     public void clickAddAttachment(){
         waitForElement(30, "(//button[contains(@type, 'button')])[3]");
         driver.findElement(By.xpath("(//button[contains(@type, 'button')])[3]")).click();
@@ -64,13 +61,6 @@ public class ContactDetailsPage {
     public void clickAttachmentSave(){
         waitForElement(30, "(//button[contains(@type, 'submit')])[2]");
         driver.findElement(By.xpath("(//button[contains(@type, 'submit')])[2]")).click();
-    }
-
-    public void checkAttachment(String commentToCheck){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.oxd-table-cell.oxd-padding-cell")));
-
-        driver.findElement(By.cssSelector("div.oxd-table-cell.oxd-padding-cell:nth-child(3)>div")).getText().contains(commentToCheck);
     }
 
     public void selectRecord(){
@@ -92,6 +82,20 @@ public class ContactDetailsPage {
         waitForElement(30, "//button[text() = ' Yes, Delete ']");
 
         driver.findElement(By.xpath("//button[text() = ' Yes, Delete ']")).click();
+    }
+
+    //===== VALIDATION STEPS =====//
+
+    public void checkSuccess(){
+        waitForElement(30, "//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]");
+        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]")).isDisplayed();
+    }
+
+    public void checkAttachment(String commentToCheck){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.oxd-table-cell.oxd-padding-cell")));
+
+        driver.findElement(By.cssSelector("div.oxd-table-cell.oxd-padding-cell:nth-child(3)>div")).getText().contains(commentToCheck);
     }
 
     public void checkDeletion(){
