@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class AdminPage {
+public class AdminPage implements Global{
 
     WebDriver driver;
 
@@ -27,13 +27,13 @@ public class AdminPage {
     }
 
     public void clickConfiguration(){
-        waitForElement(30, "//span[text() = 'Configuration ']");
-        driver.findElement(By.xpath("//span[text() = 'Configuration ']")).click();
+        waitForElement(30, configurationButton);
+        driver.findElement(By.xpath(configurationButton)).click();
     }
 
     public void clickLanguagePackages(){
-        waitForElement(30, "//a[text() = 'Language Packages']");
-        driver.findElement(By.xpath("//a[text() = 'Language Packages']")).click();
+        waitForElement(30, languagePackageButton);
+        driver.findElement(By.xpath(languagePackageButton)).click();
     }
 
     public void clickOnTranslate(String language){
@@ -51,8 +51,8 @@ public class AdminPage {
     }
 
     public void clickOnAddLanguage(){
-        waitForElement(30, "//button[text() = ' Add ']");
-        driver.findElement(By.xpath("//button[text() = ' Add ']")).click();
+        waitForElement(30, addButton);
+        driver.findElement(By.xpath(addButton)).click();
     }
 
     public void selectAddLanguage(String language){
@@ -62,8 +62,8 @@ public class AdminPage {
     }
 
     public void clickSaveOnAddLanguage(){
-        waitForElement(30, "//button[text() = ' Save ']");
-        driver.findElement(By.xpath("//button[text() = ' Save ']")).click();
+        waitForElement(30, saveButton);
+        driver.findElement(By.xpath(saveButton)).click();
     }
 
     public void clickJobTitle() {
@@ -76,7 +76,7 @@ public class AdminPage {
     //===== VALIDATION STEPS =====//
 
     public void checkLanguageAddition(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast oxd-toast--success')]");
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast oxd-toast--success')]")).isDisplayed();
+        waitForElement(30, successToast);
+        driver.findElement(By.xpath(successToast)).isDisplayed();
     }
 }

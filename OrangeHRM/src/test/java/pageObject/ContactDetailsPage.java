@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ContactDetailsPage {
+public class ContactDetailsPage implements Global{
 
     WebDriver driver;
 
@@ -26,10 +26,10 @@ public class ContactDetailsPage {
     }
 
     public void setStreet1(String street){
-        waitForElement(30, "(//input[contains(@class, 'oxd-input oxd-input--active')])[2]");
-        driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).click();
-        driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).clear();
-        driver.findElement(By.xpath("(//input[contains(@class, 'oxd-input oxd-input--active')])[2]")).sendKeys(street);
+        waitForElement(30, street1Field);
+        driver.findElement(By.xpath(street1Field)).click();
+        driver.findElement(By.xpath(street1Field)).clear();
+        driver.findElement(By.xpath(street1Field)).sendKeys(street);
     }
 
     public void setCountry(String country){
@@ -87,8 +87,8 @@ public class ContactDetailsPage {
     //===== VALIDATION STEPS =====//
 
     public void checkSuccess(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]");
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success oxd-toast-container--toast')]")).isDisplayed();
+        waitForElement(30, successToast);
+        driver.findElement(By.xpath(successToast)).isDisplayed();
     }
 
     public void checkAttachment(String commentToCheck){
@@ -99,8 +99,7 @@ public class ContactDetailsPage {
     }
 
     public void checkDeletion(){
-        waitForElement(30, "//div[contains(@class, 'oxd-toast--success')]");
-
-        driver.findElement(By.xpath("//div[contains(@class, 'oxd-toast--success')]")).isDisplayed();
+        waitForElement(30, successToast);
+        driver.findElement(By.xpath(successToast)).isDisplayed();
     }
 }

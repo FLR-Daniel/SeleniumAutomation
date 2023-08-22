@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class AuthenticatePage {
+public class AuthenticatePage implements Global{
     public WebDriver driver;
 
     public AuthenticatePage(WebDriver driver){
@@ -23,19 +23,19 @@ public class AuthenticatePage {
     }
 
     public void setUsername(String username){
-        waitForElement(30, "//input[contains(@name, 'username')]");
-        driver.findElement(By.xpath("//input[contains(@name, 'username')]")).sendKeys(username);
+        waitForElement(30, usernameField);
+        driver.findElement(By.xpath(usernameField)).sendKeys(username);
     }
     public void setPassword(String password){
-        driver.findElement(By.xpath("//input[contains(@name, 'password')]")).sendKeys(password);
+        driver.findElement(By.xpath(passwordField)).sendKeys(password);
     }
 
     public void clickLogin(){
-        driver.findElement(By.xpath("//button[contains(@class, 'oxd-button oxd-button--medium oxd-button--main orangehrm-login-button')]")).click();
+        driver.findElement(By.xpath(loginButton)).click();
     }
 
     public void ClickForgot(){
-        driver.findElement(By.xpath("//div[contains(@class, 'orangehrm-login-forgot')]/p")).click();
+        driver.findElement(By.xpath(forgotPasswordButton)).click();
     }
 
     //===== VALIDATION STEPS =====//
